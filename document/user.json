@@ -1,0 +1,41 @@
+{
+    "users": [
+        {
+            "user": "张飞",
+            "avatar": "/v1/document/avatar/avatar1.jpg"
+        },
+        {
+            "user": "刘备",
+            "avatar": "/v1/document/avatar/avatar2.jpg"
+        },
+        {
+            "user": "关羽",
+            "avatar": "/v1/document/avatar/avatar3.jpg"
+        },
+        {
+            "user": "孔子",
+            "avatar": "/v1/document/avatar/avatar4.jpg"
+        },
+        {
+            "user": "赵云",
+            "avatar": "/v1/document/avatar/avatar5.jpg"
+        },
+        {
+            "user": "cxk",
+            "avatar": "/v1/document/avatar/cxk.jpg"
+        },
+        {
+            "user": "Jack Ma",
+            "avatar": "/v1/document/avatar/my.jpg"
+        },
+        {
+            "user": "杨过",
+            "avatar": "/v1/document/avatar/yg.jpg"
+        },
+        {
+            "user": "我是猪",
+            "avatar": "/v1/document/avatar/pig.jpg"
+        }
+
+    ]
+}

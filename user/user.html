@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GDPU bbs</title>
+    <!--引入mdui-->
+    <link rel="stylesheet" href="../css/mdui.css">
+    <!--引入自定义css-->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <style>
+
+    </style>
+</head>
+
+<body class="mdui-theme-primary-pink mdui-theme-accent-amber mdui-bottom-nav-fixed mdui-appbar-with-toolbar">
+    <!-- 导航栏 -->
+    <div id="navigationBar" class="mdui-appbar mdui-appbar-fixed">
+        <!-- <div id="navigationBar" class="mdui-appbar mdui-appbar-fixed"> -->
+        <!-- <div id="navigationBar" class="mdui-appbar"> -->
+        <div class="mdui-toolbar mdui-color-theme">
+            <a id="toggle" href="javascript:;" class="mdui-btn mdui-btn-icon " mdui-drawer="{target: '#main-drawer', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+            <a href="javascript:;" class="mdui-typo-title">个人中心</a>
+            <div class="mdui-toolbar-spacer"></div>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+        </div>
+
+    </div>
+
+
+    <!-- 内容 -->
+    <div class="mdui-container">
+
+        <!-- 头像等信息 -->
+        <div class="mdui-card mdui-hoverable mdui-m-t-2">
+
+            <!-- 卡片头部，包含头像、标题、副标题 -->
+            <div class="mdui-card-header">
+                <img class="mdui-card-header-avatar" src="./avatar/avatar.jpg" />
+                <div class="mdui-card-header-title">昵称</div>
+                <div class="mdui-card-header-subtitle">查看主页或编辑资料</div>
+                <div class="mdui-card-menu" style="float:right">
+                    <button class="mdui-btn mdui-btn-icon mdui-text-color-grey"><i class="mdui-icon material-icons">keyboard_arrow_right</i></button>
+                </div>
+            </div>
+
+
+            <!-- 卡片的内容 -->
+            <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+
+            <!-- 卡片的按钮 -->
+            <div class="mdui-card-actions">
+                <div class="mdui-row-xs-3">
+                    <div class="mdui-col">
+                        <!-- 在此处的标签居中必须搭配text-align:center和mdui-center -->
+                        <span class="mdui-center" style="text-align: center">1</span>
+                        <button class="mdui-btn mdui-btn-block  mdui-ripple">关注</button>
+                    </div>
+                    <div class="mdui-col">
+                        <span class="mdui-center" style="text-align: center">2</span>
+                        <button class="mdui-btn mdui-btn-block  mdui-ripple">粉丝</button>
+                    </div>
+                    <div class="mdui-col">
+                        <span class="mdui-center" style="text-align: center">3</span>
+                        <button class="mdui-btn mdui-btn-block  mdui-ripple">帖子</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- 功能分类 -->
+    <div id="funCategory" class="mdui-container mdui-m-t-1">
+        <div class="mdui-tab mdui-tab-full-width mdui-color-transparent" mdui-tab>
+            <a href="#example6-tab1" class="mdui-ripple ">
+                <i class="mdui-icon material-icons">favorite</i>
+                <label>我的关注</label>
+            </a>
+            <a href="#example6-tab2" class="mdui-ripple">
+                <i class="mdui-icon material-icons">star</i>
+                <label>我的收藏</label>
+            </a>
+            <a href="#example6-tab3" class="mdui-ripple">
+                <i class="mdui-icon material-icons">apps</i>
+                <label>我的分类</label>
+            </a>
+            <a href="#example6-tab3" class="mdui-ripple">
+                <i class="mdui-icon material-icons">perm_contact_calendar</i>
+                <label>黑名单</label>
+            </a>
+        </div>
+        <div class="mdui-tab mdui-tab-full-width mdui-color-theme-0" mdui-tab>
+            <a href="#example6-tab1" class="mdui-ripple">
+                <i class="mdui-icon material-icons">format_paint</i>
+                <label>主题风格</label>
+            </a>
+            <a href="#example6-tab2" class="mdui-ripple">
+                <i class="mdui-icon material-icons">brightness_medium</i>
+                <label>夜间模式</label>
+            </a>
+            <a href="#example6-tab3" class="mdui-ripple">
+                <i class="mdui-icon material-icons">insert_photo</i>
+                <label>我的相册</label>
+            </a>
+            <a href="#example6-tab3" class="mdui-ripple">
+                <i class="mdui-icon material-icons">settings</i>
+                <label>更多设置</label>
+            </a>
+        </div>
+    </div>
+
+
+
+    <!-- 抽屉 -->
+    <div id="main-drawer" class="mdui-drawer mdui-drawer-close" id="drawer">
+        <ul class="mdui-list">
+            <li class="mdui-subheader">最近常访问</li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">move_to_inbox</i>
+                <div class="mdui-list-item-content">广药茶馆</div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">star</i>
+                <div class="mdui-list-item-content">校园生活</div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">send</i>
+                <div class="mdui-list-item-content">综合市场</div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">drafts</i>
+                <div class="mdui-list-item-content">综合技术</div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">email</i>
+                <div class="mdui-list-item-content">资源分享</div>
+            </li>
+            <li class="mdui-subheader">Subheader</li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">delete</i>
+                <div class="mdui-list-item-content">Trash</div>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">error</i>
+                <div class="mdui-list-item-content">Spam</div>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <!-- 底部 -->
+    <div class="mdui-bottom-nav  mdui-bottom-nav-text-auto mdui-color-theme">
+        <a href="../index.html" class="mdui-ripple mdui-ripple-white ">
+            <i class="mdui-icon material-icons">home</i>
+            <label>首页</label>
+        </a>
+        <a href="javascript:void(0);" class="mdui-ripple mdui-ripple-white">
+            <i class="mdui-icon material-icons">apps</i>
+            <label>进贴</label>
+        </a>
+        <a href="javascript:void(0);" class="mdui-ripple mdui-ripple-white">
+            <i class="mdui-icon material-icons">message</i>
+            <label>消息</label>
+        </a>
+        <a href="javascript:void(0);" class="mdui-ripple mdui-ripple-white mdui-bottom-nav-active">
+            <i class="mdui-icon material-icons">account_circle</i>
+            <label>个人</label>
+        </a>
+    </div>
+
+
+
+
+    <!-- 外部js -->
+    <script type="text/javascript" src="../js/mdui.js"></script>
+    <script type="text/javascript" src="../js/axios.min.js"></script>
+    <!-- 自定义js -->
+    <!-- <script type="text/javascript" src="js/index.js"></script> -->
+    <script type="text/javascript">
+        var $$ = mdui.JQ;
+        var inst = new mdui.Fab('#fab');
+
+        // event
+        var fab = document.getElementById('fab');
+        fab.addEventListener('open.mdui.fab', function() {
+            console.log('open');
+        });
+
+        fab.addEventListener('opened.mdui.fab', function() {
+            console.log('opened');
+        });
+
+        fab.addEventListener('close.mdui.fab', function() {
+            console.log('close');
+        });
+
+        fab.addEventListener('closed.mdui.fab', function() {
+            console.log('closed');
+        });
+
+
+        window.onscroll = function() {
+            //屏幕滚动时判断顶部栏是否隐藏，如果隐藏，则将侧栏高度变为全高
+            if ($$("#navigationBar").hasClass('mdui-headroom-unpinned-top')) {
+                $$("#main-drawer").addClass("mdui-drawer-full-height");
+            } else {
+                $$("#main-drawer").removeClass("mdui-drawer-full-height");
+            }
+        }
+
+
+
+        //操作元素的class
+        function doClass(ele, classList, option) {
+            if (option == 'add') {
+                ele.classList.add(classList);
+            } else if (option == 'remove') {
+                ele.classList.remove(classList);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

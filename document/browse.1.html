@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浏览帖子</title>
+    <!--引入mdui-->
+    <link rel="stylesheet" href="../css/mdui.css">
+    <!--引入自定义css-->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <style>
+        .my-img {
+            width: 50% !important;
+        }
+        
+        .my-img img {
+            border-radius: 10px;
+        }
+        
+        @media screen and (min-width: 600px) {
+            .my-img {
+                width: 60%;
+            }
+        }
+        
+        @media screen and (min-width: 768px) {
+            .my-img {
+                width: 50%;
+            }
+        }
+        
+        .my-img {
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+
+<body class="mdui-theme-primary-pink mdui-theme-accent-amber mdui-bottom-nav-fixed mdui-appbar-with-toolbar">
+    <!-- 导航栏 -->
+    <div id="navigationBar" class="mdui-appbar mdui-appbar-fixed">
+        <!-- <div id="navigationBar" class="mdui-appbar mdui-appbar-fixed"> -->
+        <!-- <div id="navigationBar" class="mdui-appbar"> -->
+        <div class="mdui-toolbar mdui-color-theme">
+            <a id="toggle" href="../index.html" class="mdui-btn mdui-btn-icon " mdui-drawer="{target: '#main-drawer', swipe: true}"><i class="mdui-icon material-icons">arrow_back</i></a>
+            <a href="javascript:;" class="mdui-typo-title">浏览帖子</a>
+            <div class="mdui-toolbar-spacer"></div>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+        </div>
+
+    </div>
+
+
+    <!-- 内容 -->
+    <div id="content" class="mdui-container">
+
+        <!-- 帖子信息 -->
+        <div id="postInfo" class="mdui-card mdui-hoverable mdui-m-t-1">
+
+        </div>
+        <!-- 内容 -->
+        <div id="postContent" class="mdui-card mdui-hoverable mdui-m-t-1 mdui-p-x-3 mdui-p-y-1">
+        </div>
+
+        <!-- 回复 -->
+        <div id="postComment" class="mdui-card mdui-hoverable mdui-m-t-1 mdui-p-x-1 mdui-p-y-1">
+
+            <div class="mdui-collapse" mdui-collapse>
+                <div class="mdui-collapse-item mdui-m-t-1">
+                    <div class="mdui-collapse-item-header">
+                        <div class="mdui-card">
+                            <!-- 卡片头部，包含头像、标题、副标题 -->
+                            <div class="mdui-card-header">
+                                <img class="mdui-card-header-avatar" src="avatar/avatar2.jpg" />
+                                <div class="mdui-card-header-title">刘备</div>
+                                <div class="mdui-card-header-subtitle">2019-5-12 11:35:15</div>
+                            </div>
+                            <!-- 卡片的媒体内容，可以包含图片、视频等媒体内容，以及标题、副标题 -->
+                            <div class="mdui-card-media mdui-m-l-2 my-img">
+                                <img class="" src="img/2.jpg" />
+                            </div>
+
+                            <!-- 卡片的内容 -->
+                            <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                            <!-- 卡片的按钮 -->
+                            <div class="mdui-card-actions">
+                                <button class="mdui-btn mdui-ripple">点赞1</button>
+                                <button class="mdui-btn mdui-ripple">评论3</button>
+                                <button class="mdui-btn mdui-btn-icon mdui-float-right"><i class="mdui-icon material-icons">expand_more</i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 子回复 -->
+                    <div class="mdui-collapse-item-body mdui-shadow-1 mdui-m-x-1">
+                        <div class="mdui-card">
+                            <!-- 卡片头部，包含头像、标题、副标题 -->
+                            <div class="mdui-card-header">
+                                <img class="mdui-card-header-avatar" src="avatar/avatar4.jpg" />
+                                <div class="mdui-card-header-title">关羽 回复 刘备</div>
+                                <div class="mdui-card-header-subtitle">2019-5-12 11:35:15</div>
+                            </div>
+                            <!-- 卡片的内容 -->
+                            <div class="mdui-card-content">大哥你也来啦</div>
+                        </div>
+                        <div class="mdui-card">
+                            <!-- 卡片头部，包含头像、标题、副标题 -->
+                            <div class="mdui-card-header">
+                                <img class="mdui-card-header-avatar" src="avatar/avatar2.jpg" />
+                                <div class="mdui-card-header-title">刘备 回复 关羽</div>
+                                <div class="mdui-card-header-subtitle">2019-5-12 11:35:15</div>
+                            </div>
+                            <!-- 卡片的内容 -->
+                            <div class="mdui-card-content">嗯</div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="mdui-collapse-item mdui-m-t-1">
+                    <div class="mdui-collapse-item-header">
+                        <div class="mdui-card">
+                            <!-- 卡片头部，包含头像、标题、副标题 -->
+                            <div class="mdui-card-header">
+                                <img class="mdui-card-header-avatar" src="avatar/avatar2.jpg" />
+                                <div class="mdui-card-header-title">Title</div>
+                                <div class="mdui-card-header-subtitle">2019-5-12 11:35:15</div>
+                            </div>
+
+
+                            <!-- 卡片的内容 -->
+                            <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                            <!-- 卡片的按钮 -->
+                            <div class="mdui-card-actions">
+                                <button class="mdui-btn mdui-ripple">点赞</button>
+                                <button class="mdui-btn mdui-ripple">评论</button>
+                                <button class="mdui-btn mdui-btn-icon mdui-float-right"><i class="mdui-icon material-icons">expand_more</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mdui-collapse-item-body">
+                        <p>item2 content</p>
+                        <p>item2 content</p>
+                        <p>item2 content</p>
+                    </div>
+                </div>
+
+                <div class="mdui-collapse-item mdui-m-t-1">
+                    <div class="mdui-collapse-item-header">
+                        <div class="mdui-card">
+                            <!-- 卡片头部，包含头像、标题、副标题 -->
+                            <div class="mdui-card-header">
+                                <img class="mdui-card-header-avatar" src="avatar/avatar2.jpg" />
+                                <div class="mdui-card-header-title">Title</div>
+                                <div class="mdui-card-header-subtitle">2019-5-12 11:35:15</div>
+                            </div>
+
+                            <!-- 卡片的内容 -->
+                            <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                            <!-- 卡片的按钮 -->
+                            <div class="mdui-card-actions">
+                                <button class="mdui-btn mdui-ripple">点赞</button>
+                                <button class="mdui-btn mdui-ripple">评论</button>
+                                <button class="mdui-btn mdui-btn-icon mdui-float-right"><i class="mdui-icon material-icons">expand_more</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mdui-collapse-item-body">
+                        <p>item2 content</p>
+                        <p>item2 content</p>
+                        <p>item2 content</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <!-- 抽屉 -->
+
+
+
+
+    <!-- 底部 -->
+    <div class="mdui-bottom-nav  mdui-bottom-nav-text-auto mdui-color-theme">
+        <a href="../index.html" class="mdui-ripple mdui-ripple-white mdui-bottom-nav-active">
+            <i class="mdui-icon material-icons">home</i>
+            <label>写回复</label>
+        </a>
+        <a href="javascript:void(0);" class="mdui-ripple mdui-ripple-white">
+            <i class="mdui-icon material-icons">apps</i>
+            <label>点赞</label>
+        </a>
+        <a href="javascript:void(0);" class="mdui-ripple mdui-ripple-white">
+            <i class="mdui-icon material-icons">message</i>
+            <label>收藏</label>
+        </a>
+        <a href="../user/user.html" class="mdui-ripple mdui-ripple-white">
+            <i class="mdui-icon material-icons">account_circle</i>
+            <label>更多</label>
+        </a>
+    </div>
+
+
+
+    <div class="mdui-fab-wrapper mdui-m-b-5" id="fab">
+        <button class="mdui-fab mdui-ripple mdui-color-pink-accent">
+            <i class="mdui-icon material-icons">add</i>
+            <i class="mdui-icon mdui-fab-opened material-icons">mode_edit</i>
+        </button>
+        <div class="mdui-fab-dial">
+            <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-pink"><i class="mdui-icon material-icons">add_circle_outline</i>
+            </button>
+            <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-red"><i class="mdui-icon material-icons">bookmark</i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 外部js -->
+    <script type="text/javascript" src="../js/mdui.js"></script>
+    <script type="text/javascript" src="../js/marked.min.js"></script>
+
+    <!-- 自定义js -->
+    <!-- <script type="text/javascript" src="js/index.js"></script> -->
+    <script type="text/javascript">
+        //创建一个底部按钮
+        var inst = new mdui.Fab('#fab');
+
+
+        //操作元素的class
+        function doClass(ele, classList, option) {
+            if (option == 'add') {
+                ele.classList.add(classList);
+            } else if (option == 'remove') {
+                ele.classList.remove(classList);
+            }
+        }
+
+        //请求文章配置,在文章内容加载之前，必须执行此函数
+        function loadADocJson() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "adoc.json");
+            xhr.send();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(JSON.parse(xhr.responseText));
+                    sessionStorage.setItem("adoc", xhr.responseText); //将处理后的document.json储存到本地
+                }
+            };
+
+            //用户信息
+            var xhr1 = new XMLHttpRequest();
+            xhr1.open("GET", "user.json");
+            xhr1.send();
+            xhr1.onreadystatechange = function() {
+                if (xhr1.readyState == 4 && xhr1.status == 200) {
+                    console.log(JSON.parse(xhr1.responseText));
+                    sessionStorage.setItem("user", xhr1.responseText); //将处理后的user.json储存到本地
+                }
+            };
+        }
+
+        //加载单篇文档内容,传入markdown格式,由marked.js解析生成html
+        function loadSingleDocContent(adocMarkDown) {
+            var content = marked(adocMarkDown)
+            document.getElementById("postContent").innerHTML = content;
+        }
+
+        //加载文章头部信息, 传入info对象
+        function loadSingleDocInfo(adocInfo) {
+            var info = `
+                <li class="mdui-list-item mdui-ripple">
+                <!-- 用户头像 -->
+                <div class="mdui-list-item-avatar"><img src="${getAvatarByUserName(adocInfo.user)}" /></div>
+                <div class="mdui-list-item-content">
+                    <!-- 用户名称 -->
+                    <div class="mdui-list-item-title">${adocInfo.user}</div>
+                    <div class="mdui-list-item-text mdui-list-item-one-line"><span class="mdui-text-color-theme-text">${adocInfo.date}</span></div>
+                </div>
+                <div class="mdui-chip">
+                    <span class="mdui-chip-title">关注</span>
+                </div>
+                </li>
+            `
+            document.getElementById("postInfo").innerHTML = info;
+        }
+
+        function getAvatarByUserName(username) {
+            var userJson = JSON.parse(sessionStorage.getItem("user"));
+            var users = userJson.users;
+            for (var i = 0; i < users.length; i++) {
+                if (users[i].user == username) {
+                    return users[i].avatar;
+                }
+            }
+        }
+
+
+        //处理单层回复
+        function loadSingleDocComments(aDocComment) {
+            var comment = `
+                <div class="mdui-collapse-item mdui-m-t-1">
+                    <div class="mdui-collapse-item-header">
+                        <div class="mdui-card">
+                            <!-- 卡片头部，包含头像、标题、副标题 -->
+                            <div class="mdui-card-header">
+                                <img class="mdui-card-header-avatar" src="${getAvatarByUserName(aDocComment.user)}" />
+                                <div class="mdui-card-header-title">${aDocComment.user}</div>
+                                <div class="mdui-card-header-subtitle">${aDocComment.date}</div>
+                            </div>
+                            <!-- 卡片的媒体内容，可以包含图片、视频等媒体内容，以及标题、副标题 -->
+                            <div class="mdui-card-media mdui-m-l-2 my-img">
+                                <img  src="${aDocComment.img}" />
+                            </div>
+
+                            <!-- 卡片的内容 -->
+                            <div class="mdui-card-content">${aDocComment.comment}</div>
+                            <!-- 卡片的按钮 -->
+                            <div class="mdui-card-actions">
+                                <button class="mdui-btn mdui-ripple">点赞${aDocComment.good}</button>
+                                <button class="mdui-btn mdui-ripple">评论${aDocComment.morecomment.length}</button>
+                                <button class="mdui-btn mdui-btn-icon mdui-float-right"><i class="mdui-icon material-icons">expand_more</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mdui-collapse-item-body mdui-shadow-1 mdui-m-x-1">
+                    `;
+            //遍历所有子回复
+            var subArr = aDocComment.morecomment;
+            for (var i = 0; i < subArr.length; i++) {
+                //处理单个子回复
+                comment += loadSingleDocCommentsReply(subArr[i]);
+            }
+            //先闭合子回复外层，再闭合单层回复
+            comment += `
+                        </div>
+                    </div>
+                `
+
+        }
+
+        function loadSingleDocCommentsReply(aDcocCommentReply) {
+            var subComment = `
+                    <!-- 子回复 -->
+                        <div class="mdui-card">
+                            <!-- 卡片头部，包含头像、标题、副标题 -->
+                            <div class="mdui-card-header">
+                                <img class="mdui-card-header-avatar" src="${getAvatarByUserName(aDcocCommentReply.user)}" />
+                                <div class="mdui-card-header-title">${aDcocCommentReply.user} 回复 ${aDcocCommentReply.reply}</div>
+                            </div>
+                            <!-- 卡片的内容 -->
+                            <div class="mdui-card-content">${aDcocCommentReply.comment}</div>
+                        </div>
+            `;
+        }
+
+
+
+        //加载文档所有回复, 回复是数组，包含每层楼的回复
+        function loadDocComments(adocComments) {
+            for (var i = 0; i < adocComments.length; i++) {
+                loadSingleDocComments(adocComments[i]);
+            }
+        }
+
+
+        //加载文档流程
+        function loadADoc() {
+            //加载json配置
+            loadADocJson();
+            var docJson = JSON.parse(sessionStorage.getItem("adoc")); //获取存储的document.json
+
+            //加载文章信息
+            loadSingleDocInfo(docJson.postInfo);
+
+            //加载文章内容
+            loadSingleDocContent(docJson.postContent);
+
+            //加载文档的回复
+            loadSingleDocComments(docJson.comments);
+        }
+        window.onload = function() {
+            loadADoc();
+        }
+    </script>
+
+</body>
+
+</html>

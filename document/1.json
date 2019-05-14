@@ -1,0 +1,66 @@
+[
+    {
+	"post_comment": [
+        {
+		"com_bad": 3,
+		"com_content": "说的好",
+		"com_good": 2,
+		"com_reply": [{
+			"rep_content": "test楼中楼",
+			"rep_date": "2018",
+			"rep_fromuser": {
+				"user_account": "刘备",
+				"user_uid": "1"
+			},
+			"rep_touser": {
+				"user_account": "张飞",
+				"user_uid": "2"
+			},
+			"rep_uid": "1"
+		}],
+		"com_uid": "1"
+	}, {
+		"com_bad": 3,
+		"com_content": "说的挺好的。",
+		"com_reply": [],
+		"com_uid": "2"
+	}],
+	"post_content": "内容测试1",
+	"post_date": "2019年05月14日 08:42:05",
+	"post_favour": 12,
+	"post_good": 5,
+	"post_imgPath": "J:\\javaIOtest\\sshimg\\6D3D899E76734CCB97927E3678325CA52019-05-02 17_10_08-book_img.jpg",
+	"post_tags": [],
+	"post_title": "标题1",
+	"post_uid": "2c9b16316ab3c6c3016ab3ca0f950000"
+}, {
+	"post_comment": [],
+	"post_content": "neirong",
+	"post_date": "2019年05月14日 09:58:16",
+	"post_favour": 0,
+	"post_good": 0,
+	"post_imgPath": "F4763672E0574145B21C663BD9751225_2019-03-19.png",
+	"post_tags": [],
+	"post_title": "标题2",
+	"post_uid": "2c9b16316ab40ac1016ab40fd1f00000"
+}, {
+	"post_comment": [],
+	"post_content": "内容3",
+	"post_date": "2019年05月14日 10:13:20",
+	"post_favour": 0,
+	"post_good": 0,
+	"post_imgPath": "/imgE434A987EC6A4665B0BAE7A0D8C6BE08_visio.png",
+	"post_tags": [],
+	"post_title": "标题3",
+	"post_uid": "2c9b16316ab41c0f016ab41da9330000"
+}, {
+	"post_comment": [],
+	"post_content": "内容4",
+	"post_date": "2019年05月14日 10:17:59",
+	"post_favour": 0,
+	"post_good": 0,
+	"post_imgPath": "/img129E0A5A2FAC4835B8E5F0D411A9BB40_2019-02-18 (1).png",
+	"post_tags": [],
+	"post_title": "标题4",
+	"post_uid": "2c9b16316ab41c0f016ab421de3c0001"
+}]

@@ -1,0 +1,27 @@
+[{
+	"com_bad": 3,
+	"com_content": "说的好",
+	"com_good": 2,
+	"com_img": "/document/img/3.jpg",
+	"com_reply": [{
+		"rep_content": "test楼中楼",
+		"rep_date": "2018",
+		"rep_fromuser": {
+			"user_account": "刘备",
+			"user_uid": "1"
+		},
+		"rep_touser": {
+			"user_account": "张飞",
+			"user_uid": "2"
+		},
+		"rep_uid": "1"
+	}],
+	"com_uid": "1"
+}, {
+	"com_bad": 3,
+	"com_content": "说的挺好的。",
+	"com_good": 1,
+	"com_img": "/document/img/2.jpg",
+	"com_reply": [],
+	"com_uid": "2"
+}]

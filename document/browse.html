@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浏览帖子</title>
+    <!--引入mdui-->
+    <link rel="stylesheet" href="../css/mdui.css">
+    <!--引入自定义css-->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <style>
+        .my-img {
+            width: 50% !important;
+        }
+        
+        .my-img-rounded img {
+            border-radius: 10px;
+        }
+        
+        @media screen and (min-width: 600px) {
+            .my-img {
+                width: 60%;
+            }
+        }
+        
+        @media screen and (min-width: 768px) {
+            .my-img {
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
+
+<body class="mdui-theme-primary-pink mdui-theme-accent-amber mdui-bottom-nav-fixed mdui-appbar-with-toolbar">
+    <!-- 导航栏 -->
+    <div id="navigationBar" class="mdui-appbar mdui-appbar-fixed">
+        <!-- <div id="navigationBar" class="mdui-appbar mdui-appbar-fixed"> -->
+        <!-- <div id="navigationBar" class="mdui-appbar"> -->
+        <div class="mdui-toolbar mdui-color-theme">
+            <a id="toggle" href="../index.html" class="mdui-btn mdui-btn-icon " mdui-drawer="{target: '#main-drawer', swipe: true}"><i class="mdui-icon material-icons">arrow_back</i></a>
+            <a href="javascript:;" class="mdui-typo-title">浏览帖子</a>
+            <div class="mdui-toolbar-spacer"></div>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+        </div>
+
+    </div>
+
+    <!-- 提示文档加载中 -->
+    <div id="loader" class="mdui-container">
+        <div class="mdui-progress mdui-m-t-4">
+            <div class="mdui-progress-indeterminate"></div>
+        </div>
+        <span class="mdui-center mdui-m-t-1" style="text-align:center;">加载中(｡>∀<｡)</span>
+    </div>
+
+    <!-- 内容 -->
+    <div id="content" class="mdui-container">
+
+        <!-- 帖子信息 -->
+        <div id="postInfo" class="mdui-card mdui-hoverable mdui-m-t-1">
+
+        </div>
+
+        <!-- 内容 -->
+        <div id="postContent" class="mdui-card mdui-hoverable mdui-m-t-1 mdui-p-x-3 mdui-p-y-1">
+        </div>
+
+        <!-- 回复 -->
+        <div class="mdui-card mdui-hoverable mdui-m-t-1 mdui-p-x-1 mdui-p-y-1">
+
+            <div id="postComment" class="mdui-collapse" mdui-collapse>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- 抽屉 -->
+
+
+
+    <!-- 底部 -->
+    <div id="bottomNav" class="mdui-bottom-nav  mdui-color-theme">
+        <a href="javascript:void(0)" class="mdui-ripple mdui-ripple-white ">
+
+            <i class="mdui-icon material-icons">edit</i>
+            <label>{{reply}}</label>
+        </a>
+        <a href="javascript:void(0);" class="mdui-ripple mdui-ripple-white">
+            <i class="mdui-icon material-icons">thumb_up</i>
+            <label>{{good}}</label>
+        </a>
+        <a href="javascript:void(0);" class="mdui-ripple mdui-ripple-white">
+            <i class="mdui-icon material-icons">star_border</i>
+            <label>{{favour}}</label>
+        </a>
+        <a href="javascript:void(0)" class="mdui-ripple mdui-ripple-white">
+            <i class="mdui-icon material-icons">more_vert</i>
+            <label>{{more}}</label>
+        </a>
+    </div>
+
+
+
+
+    <div class="mdui-fab-wrapper mdui-m-b-5" id="fab">
+        <button class="mdui-fab mdui-ripple mdui-color-pink-accent">
+            <i class="mdui-icon material-icons">add</i>
+            <i class="mdui-icon mdui-fab-opened material-icons">mode_edit</i>
+        </button>
+        <div class="mdui-fab-dial">
+            <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-pink"><i class="mdui-icon material-icons">add_circle_outline</i>
+            </button>
+            <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-red"><i class="mdui-icon material-icons">bookmark</i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 外部js -->
+    <script type="text/javascript" src="../js/mdui.js"></script>
+    <script type="text/javascript" src="../js/marked.min.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript" src="../js/axios.min.js"></script>
+
+    <!-- 自定义js -->
+    <!-- <script type="text/javascript" src="js/index.js"></script> -->
+    <script type="text/javascript">
+        //===============================================基本页面配置============================================
+        //建立一个与导航栏关联的vue实例
+        var bottomNav = new Vue({
+            el: "#bottomNav",
+            data: {
+                reply: "回复",
+                good: "点赞",
+                favour: "收藏",
+                more: "更多"
+            }
+        })
+
+
+        //创建一个底部按钮
+        var inst = new mdui.Fab('#fab');
+
+
+        //操作元素的class
+        function doClass(ele, classList, option) {
+            if (option == 'add') {
+                ele.classList.add(classList);
+            } else if (option == 'remove') {
+                ele.classList.remove(classList);
+            }
+        }
+
+
+        //================================================文档配置==========================================
+        //加载单篇文档内容,传入markdown格式,由marked.js解析生成html
+        function loadSingleDocContent(docJson) {
+            var content = marked(docJson.postContent);
+            content += appendImg(docJson.postInfo.imgArr);
+            document.getElementById("postContent").innerHTML = content;
+        }
+
+        //将图片追加到内容中
+        function appendImg(imgArr) {
+            var imgEles = '<div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-row-lg-4 mdui-row-xl-5 mdui-grid-list">'
+            if (imgArr.length > 0) {
+                for (var i = 0; i < imgArr.length; i++) {
+                    imgEles += loadOneImgToDoc(imgArr[i]);
+                }
+            }
+            imgEles += "</div>";
+            return imgEles;
+        }
+
+        function loadOneImgToDoc(img) {
+            console.log(img);
+            var imgEle = `
+                <div class="mdui-card mdui-col mdui-m-t-1 mdui-shadow-0">
+                    <!-- 卡片的媒体内容，可以包含图片、视频等媒体内容，以及标题、副标题 -->
+                    <div class="mdui-card-media my-img-rounded">
+                        <img src="${img}" />
+                        <!-- 卡片中可以包含一个或多个菜单按钮 -->
+                        <div class="mdui-card-menu">
+                            <button class="mdui-btn mdui-btn-icon mdui-text-color-white"><i class="mdui-icon material-icons">share</i></button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            return imgEle;
+        }
+
+        //加载文章头部信息, 传入info对象
+        function loadSingleDocInfo(adocInfo) {
+            console.log(adocInfo);
+            console.log("---------")
+            var info = `
+                <li class="mdui-list-item mdui-ripple">
+                <!-- 用户头像 -->
+                <div class="mdui-list-item-avatar"><img src="${getAvatarByUserName(adocInfo.user)}" /></div>
+                <div class="mdui-list-item-content">
+                    <!-- 用户名称 -->
+                    <div class="mdui-list-item-title">${adocInfo.user}</div>
+                    <div class="mdui-list-item-text mdui-list-item-one-line"><span class="mdui-text-color-theme-text">${adocInfo.date}</span></div>
+                </div>
+                <div class="mdui-chip">
+                    <span class="mdui-chip-title">关注</span>
+                </div>
+                </li>
+            `;
+            document.getElementById("postInfo").innerHTML = info;
+        }
+
+
+        //根据用户名称返回头像
+        function getAvatarByUserName(username) {
+            var userJson = JSON.parse(sessionStorage.getItem("user"));
+            var users = userJson.users;
+            for (var i = 0; i < users.length; i++) {
+                if (users[i].user == username) {
+                    return users[i].avatar;
+                }
+            }
+        }
+
+
+        //处理单层回复
+        function loadSingleDocComments(aDocComment) {
+            var comment = `
+                <div class="mdui-collapse-item mdui-m-t-1">
+                    <div class="mdui-collapse-item-header">
+                        <div class="mdui-card">
+                            <!-- 卡片头部，包含头像、标题、副标题 -->
+                            <div class="mdui-card-header">
+                                <img class="mdui-card-header-avatar" src="${getAvatarByUserName(aDocComment.user)}" />
+                                <div class="mdui-card-header-title">${aDocComment.user}</div>
+                                <div class="mdui-card-header-subtitle">${aDocComment.date}</div>
+                            </div>
+                            <!-- 卡片的媒体内容，可以包含图片、视频等媒体内容，以及标题、副标题 -->
+                            <div class="mdui-card-media mdui-m-l-2 my-img my-img-rounded">
+                                <img  src="${aDocComment.img}" />
+                            </div>
+
+                            <!-- 卡片的内容 -->
+                            <div class="mdui-card-content">${aDocComment.comment}</div>
+                            <!-- 卡片的按钮 -->
+                            <div class="mdui-card-actions">
+                                <button class="mdui-btn mdui-ripple">点赞${aDocComment.good}</button>
+                                <button class="mdui-btn mdui-ripple">评论${aDocComment.morecomment.length}</button>
+                                <button class="mdui-btn mdui-btn-icon mdui-float-right"><i class="mdui-icon material-icons">expand_more</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mdui-collapse-item-body mdui-shadow-1 mdui-m-x-1">
+                    `;
+            //遍历所有子回复
+            var subArr = aDocComment.morecomment;
+            for (var i = 0; i < subArr.length; i++) {
+                //处理单个子回复
+                comment += loadSingleDocCommentsReply(subArr[i]);
+            }
+            //先闭合子回复外层，再闭合单层回复
+            comment += `
+                        </div>
+                    </div>
+                `;
+            //追加到页面
+            document.getElementById("postComment").innerHTML += comment;
+        }
+
+        //处理单层子回复
+        function loadSingleDocCommentsReply(aDcocCommentReply) {
+            var subComment = `
+                    <!-- 子回复 -->
+                        <div class="mdui-card">
+                            <!-- 卡片头部，包含头像、标题、副标题 -->
+                            <div class="mdui-card-header">
+                                <img class="mdui-card-header-avatar" src="${getAvatarByUserName(aDcocCommentReply.user)}" />
+                                <div class="mdui-card-header-title">${aDcocCommentReply.user} 回复 ${aDcocCommentReply.reply}</div>
+                            </div>
+                            <!-- 卡片的内容 -->
+                            <div class="mdui-card-content">${aDcocCommentReply.comment}</div>
+                        </div>
+            `;
+            return subComment;
+        }
+
+
+
+        //加载文档所有回复, 回复是数组，包含每层楼的回复
+        function loadDocComments(adocComments) {
+            for (var i = 0; i < adocComments.length; i++) {
+                loadSingleDocComments(adocComments[i]);
+            }
+        }
+
+        //加载点赞数，收藏数，回复数到导航栏
+        function loadToNav(docJson) {
+            var postInfo = docJson.postInfo;
+            bottomNav.reply = "回复" + docJson.comments.length;
+            bottomNav.good = "点赞" + postInfo.good;
+            bottomNav.favour = "收藏" + postInfo.favour;
+        }
+
+
+
+
+        //加载文档流程
+        function loadADoc() {
+            //请求文章配置,在文章内容加载之前，必须执行这两个请求
+            function getDocConfig() {
+                return axios.get('./adoc.json');
+            }
+
+            function getUserInfo() {
+                return axios.get('./user.json');
+            }
+
+            //同时执行两个请求
+            axios.all([getDocConfig(), getUserInfo()])
+                .then(axios.spread(function(docReq, userReq) {
+                    // 两个请求现在都执行完成
+                    //删掉页面的加载图案
+                    var loader = document.getElementById("loader");
+                    loader.parentNode.removeChild(loader);
+
+                    sessionStorage.setItem("user", JSON.stringify(userReq.data));
+                    var docJson = docReq.data;
+                    console.log(docJson);
+                    // //加载文章信息
+                    loadSingleDocInfo(docJson.postInfo);
+
+                    // //加载点赞数，收藏数，回复数到导航栏
+                    loadToNav(docJson);
+
+
+                    // //加载文章内容
+                    loadSingleDocContent(docJson);
+
+                    // //加载文档的回复
+                    loadDocComments(docJson.comments);
+                }));
+        }
+
+        window.onload = function() {
+            loadADoc();
+            console.dir(GetRequest());
+        }
+
+
+
+        function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串   
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+    </script>
+
+</body>
+
+</html>
